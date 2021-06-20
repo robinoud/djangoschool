@@ -9,3 +9,8 @@
 9.python manage.py startapp school
 
 - สร้าง Template Website
+
+
+Model
+1.python manage.py makemigrations
+2. python manage.py migrate
