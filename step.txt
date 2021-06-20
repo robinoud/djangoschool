@@ -14,3 +14,8 @@
 Model
 1.python manage.py makemigrations
 2. python manage.py migrate
+
+วิธีการรัน website โดยให้เครื่องอื่นที่อยู่ในวงแลนเดียวกันเข้าถึงได้
+1. settings.py : ALLOWED_HOST = ['*']
+2. python manage.py runserver 0.0.0.0:8000
+3.     ที่ browser พิมพ์ IP 192.168.x.x:8000
