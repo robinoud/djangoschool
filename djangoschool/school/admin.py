@@ -1,5 +1,6 @@
-from .models import AllStudent, ExamScore
+from .models import AllStudent, ExamScore, Profile
 from django.contrib import admin
+
 
 # Register your models here.
 class StudentScore(admin.ModelAdmin):
@@ -14,3 +15,4 @@ class StudentAdmin(admin.ModelAdmin):
     list_editable = ['student_tel']
 
 admin.site.register(AllStudent, StudentAdmin)
+admin.site.register(Profile)

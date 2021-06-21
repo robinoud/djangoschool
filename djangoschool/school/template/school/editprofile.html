@@ -1,0 +1,32 @@
+{% extends 'school/base.html' %}
+
+{% block content %}
+<div class="container">
+
+  <h2>แก้ไขข้อมูล</h2>
+  {% if user.profile.photoprofile %}
+          <img src="{{user.profile.photoprofile.url}}" width="100">
+        {% endif %}
+  <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+    <div class="form-group">
+        <label for="first_name">ชื่อ:</label>
+        <input type="text" class="form-control" id="first_name" name="first_name" value="{{data.first_name}}"">
+    </div>
+    <div class="form-group">
+        <label for="last_name">นามสกุล:</label>
+        <input type="text" class="form-control" id="last_name" name="last_name" value="{{data.last_name}}"">
+    </div>
+    <div class="form-group">
+      <label for="email">อีเมล์:</label>
+      <input type="email" class="form-control" id="email" name="email" value="{{data.email}}"">
+    </div>
+
+   <label> Select Photo </label><br>
+   <input type="file" id="photoprofile" name="photoprofile"><br><br>
+    <button type="submit" class="btn btn-primary">แก้ไขข้อมูล</button>
+  </form>
+
+</div>
+
+{% endblock content%}

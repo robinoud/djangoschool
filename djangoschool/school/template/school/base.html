@@ -78,13 +78,23 @@
         <a class="nav-link" href="{% url 'score-page' %}">Score</a>
       </li>
 
+      {% if user.is_authenticated and user.profile.usertype == 'teacher' %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'search-page' %}">Search</a>
+      </li>
+      {% endif %}
     </ul>
 
     <div>
       {% if user.is_authenticated %}
-      <font color="white">สวัสดี&nbsp; {{user.first_name}}&nbsp;&nbsp;{{user.last_name}}</font>
+      <a href="{% url 'editprofile-page' %}" >
+        <font color="white">สวัสดี &nbsp; {{user.first_name}}&nbsp;&nbsp;{{user.last_name}}</font>
+      </a>
         &nbsp;
-          <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
+        {% if user.profile.photoprofile %}
+          <img src="{{user.profile.photoprofile.url}}" width="50" class="rounded">
+        {% endif %}
+        <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
       {% else %}
       <a class="btn btn-primary" href="{% url 'register-page' %}">Register</a>&nbsp;
       <a class="btn btn-primary" href="{% url 'login' %}">Login</a>

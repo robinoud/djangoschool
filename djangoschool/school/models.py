@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class ExamScore(models.Model):
 
@@ -36,3 +37,13 @@ class AllStudent(models.Model):
     
     def __str__(self):
         return '{}-{}'.format(self.student_id,self.student_name)
+
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    photoprofile = models.ImageField(default = 'default.png', upload_to ='photo_profile',blank=True,null=True)
+    usertype = models.CharField(max_length=100,blank=True,null=True,default='student')
+
+    def __str__(self):
+        return f'{self.user.username} Profile'
